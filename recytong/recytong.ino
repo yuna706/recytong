@@ -11,7 +11,7 @@ LiquidCrystal_I2C lcd (0x3F,16,2); //lcd 주소
 Servo servo;      //Servo 클래스로 servo객체 생성
 
 int value = 180;    // 각도를 조절할 변수 value
-int servoPin = 8; // 아두이노에서 꽂는 곳
+int servoPin = 6; // 아두이노에서 꽂는 곳
 char bar_code; //바코드 마지막 번호 기억
 int point = 0; //누적 포인트 
 int newpoint = 0; //새 포인트
@@ -111,6 +111,8 @@ void setup() {
   lcd.setCursor(5,0);
   lcd.print("point");
   servo.write(value);
+  lcd.setCursor(5,1);
+  lcd.print(point);
 }
 
 void loop() {
@@ -121,190 +123,81 @@ void loop() {
     read_end = 0;
 
     if(bar_code=='0'){
-    //서브
-      value -= 115;       //각도를 n도 증가시킨다.
-      servo.write(value); //value값의 각도로 회전. ex) value가 90이라면 90도 회전
-      s_time = millis();
-
     //증가
       point+=100;
       newpoint+=100;
-  
-    //새 포인트
-      lcd.setCursor(0,1);
-      lcd.print("new point");
-      lcd.setCursor(10,1);
-      lcd.print(newpoint);
-      newpoint=0;
     }
     if(bar_code=='1'){
-    //서브
-      value -= 115;       //각도를 n도 증가시킨다.
-      servo.write(value); //value값의 각도로 회전. ex) value가 90이라면 90도 회전
-      s_time = millis();
-
     //증가
       point+=150;
-      newpoint+=150;
-  
-    //새 포인트
-      lcd.setCursor(0,1);
-      lcd.print("new point");
-      lcd.setCursor(10,1);
-      lcd.print(newpoint);
-      newpoint=0;
+      newpoint+=100;
     }
     if(bar_code=='2'){
-    //서브
-      value -= 115;       //각도를 150도 증가시킨다.
-      servo.write(value); //value값의 각도로 회전. ex) value가 90이라면 90도 회전
-      s_time = millis();
-
     //증가
       point+=200;
       newpoint+=200;
-  
-    //새 포인트
-      lcd.setCursor(0,1);
-      lcd.print("new point");
-      lcd.setCursor(10,1);
-      lcd.print(newpoint);
-      newpoint=0;
     }
     if(bar_code=='3'){
-    //서브
-      value -= 115;       //각도를 n도 증가시킨다.
-      servo.write(value); //value값의 각도로 회전. ex) value가 90이라면 90도 회전
-      s_time = millis();
-
     //증가
       point+=250;
       newpoint+=250;
-  
-    //새 포인트
-      lcd.setCursor(0,1);
-      lcd.print("new point");
-      lcd.setCursor(10,1);
-      lcd.print(newpoint);
-      newpoint=0;
     }
     if(bar_code=='4'){
-    //서브
-      value -= 115;       //각도를 n도 증가시킨다.
-      servo.write(value); //value값의 각도로 회전. ex) value가 90이라면 90도 회전
-      s_time = millis();
-
     //증가
       point+=300;
       newpoint+=300;
-  
-    //새 포인트
-      lcd.setCursor(0,1);
-      lcd.print("new point");
-      lcd.setCursor(10,1);
-      lcd.print(newpoint);
-      newpoint=0;
     }
     if(bar_code=='5'){
-    //서브
-      value -= 115;       //각도를 n도 증가시킨다.
-      servo.write(value); //value값의 각도로 회전. ex) value가 90이라면 90도 회전
-      s_time = millis();
-
     //증가
       point+=350;
       newpoint+=350;
-  
-    //새 포인트
-      lcd.setCursor(0,1);
-      lcd.print("new point");
-      lcd.setCursor(10,1);
-      lcd.print(newpoint);
-      newpoint=0;
     }
     if(bar_code=='6'){
-    //서브
-      value -= 115;       //각도를 n도 증가시킨다.
-      servo.write(value); //value값의 각도로 회전. ex) value가 90이라면 90도 회전
-      s_time = millis();
-
     //증가
       point+=400;
       newpoint+=400;
-  
-    //새 포인트
-      lcd.setCursor(0,1);
-      lcd.print("new point");
-      lcd.setCursor(10,1);
-      lcd.print(newpoint);
-      newpoint=0;
     }
     if(bar_code=='7'){
-    //서브
-      value -= 115;       //각도를 n도 증가시킨다.
-      servo.write(value); //value값의 각도로 회전. ex) value가 90이라면 90도 회전
-      s_time = millis();
-
     //증가
       point+=450;
       newpoint+=450;
-  
-    //새 포인트
-      lcd.setCursor(0,1);
-      lcd.print("new point");
-      lcd.setCursor(10,1);
-      lcd.print(newpoint);
-      newpoint=0;
     }
     if(bar_code=='8'){
-    //서브
-      value -= 115;       //각도를 n도 증가시킨다.
-      servo.write(value); //value값의 각도로 회전. ex) value가 90이라면 90도 회전
-      s_time = millis();
-
     //증가
       point+=500;
       newpoint+=500;
-  
-    //새 포인트
-      lcd.setCursor(0,1);
-      lcd.print("new point");
-      lcd.setCursor(10,1);
-      lcd.print(newpoint);
-      newpoint=0;
     }
     if(bar_code=='9'){
-    //서브
-      value -= 115;       //각도를 n도 증가시킨다.
-      servo.write(value); //value값의 각도로 회전. ex) value가 90이라면 90도 회전
-      s_time = millis();
-
     //증가
       point+=550;
       newpoint+=550;
-  
+    }
+
+    //서브
+      value -= 110;       //각도를 n도 증가시킨다.
+      servo.write(value); //value값의 각도로 회전. ex) value가 90이라면 90도 회전
+      s_time = millis();
+      
     //새 포인트
       lcd.setCursor(0,1);
       lcd.print("new point");
       lcd.setCursor(10,1);
       lcd.print(newpoint);
       newpoint=0;
-    }
+    
   }
   now_time = millis();
   if(s_time !=0){
     if ( now_time > s_time+3000 && now_time < s_time+9000) {
       lcd.print("             ");
       lcd.setCursor(0,1);
-      lcd.print("    point");
-      lcd.setCursor(10,1);
+      lcd.print("             ");
+      lcd.setCursor(5,1);
       lcd.print(point);
     }
     now_time = millis();
     if (now_time > s_time+9000) {
       servo.write(180); //0으로 돌아옴
-      lcd.setCursor(0,1);
-      lcd.print("                   ");
       value=180;
     }
   }
